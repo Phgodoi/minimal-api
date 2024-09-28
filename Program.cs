@@ -1,6 +1,10 @@
+using Microsoft.EntityFrameworkCore;
 using minimal_api.Domain.DTOs;
+using minimal_api.Infraestructure.Db;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("SQLServer")));
+
 var app = builder.Build();
 
 app.MapGet("/", () => "Hello World!");
