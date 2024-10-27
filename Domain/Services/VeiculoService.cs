@@ -11,13 +11,7 @@ namespace minimal_api.Domain.Services
         public VeiculoService(Context context) 
         {
             _context = context;
-        }
-
-        public void Delete(Veiculo veiculo)
-        {
-            _context.veiculos.Remove(veiculo);
-            _context.SaveChanges();
-        }
+        }      
 
         public IQueryable<Veiculo> Get()
         {
@@ -53,6 +47,11 @@ namespace minimal_api.Domain.Services
         public void Update(Veiculo veiculo)
         {
             _context.veiculos.Update(veiculo);
+            _context.SaveChanges();
+        }
+        public void Delete(Veiculo veiculo)
+        {
+            _context.veiculos.Remove(veiculo);
             _context.SaveChanges();
         }
     }
